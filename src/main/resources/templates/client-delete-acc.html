@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}" th:with="link=@{/client/home}">
+	
+	<body>
+		<div layout:fragment="content">
+		
+			<div>
+				<h1>Cadastro de Cliente</h1>
+			</div>
+			
+			<br/>
+			
+			<div id="messageError">
+				<span>Você tem certeza que deseja excluir sua conta? <br/> Esta ação não poderá ser desfeita.</span>
+			</div>
+			
+			<br/>
+			<br/>
+			
+			<input type="button" value="Voltar" th:onClick="'location.href=\'' + @{/client/edit} + '\';'">
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			
+			<input type="button" id="accDeleteBtn" value="Sim, Desejo Excluir Minha Conta Definitivamente" th:onClick="'location.href=\'' + @{/client/edit/delete/confirm} + '\';'">
+		
+		</div>
+	</body>
+</html>

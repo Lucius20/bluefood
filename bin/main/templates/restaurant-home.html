@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}" th:with="link=@{/restaurant/home}">
+	
+	<body>
+		<div layout:fragment="content">
+		
+			<img th:src="@{/images/logo/} + ${restaurant.logo}" id="restaurantOption"/>
+			<br/><br/>
+		
+			<div id="revenues">
+				<span id="revenuesTitle">Faturamento</span><br/><br/>
+				<span id="revenues" th:text="'Dia: ' + ${currencyUtils.formatPtBr(revenues.day)}"></span>
+				<span id="revenues" th:text="'Mês: ' + ${currencyUtils.formatPtBr(revenues.month)}"></span>
+				<span id="revenues" th:text="'Ano: ' + ${currencyUtils.formatPtBr(revenues.year)}"></span>
+			</div>
+			
+			<br/><br/>
+
+			<div>
+				<h1>Configurações</h1>
+				<input type="button" value="Dados básicos" th:onClick="'location.href=\'' + @{/restaurant/edit} + '\';'"><br>
+				<!-- <input type="submit" value="Categorias de comida" th:onClick="'location.href=\'' + @{/restaurant/foods} + '\';'"><br> -->
+				<input type="submit" value="Comidas" th:onClick="'location.href=\'' + @{/restaurant/foods} + '\';'"><br>
+				<input type="submit" value="Relatório de Pedidos" th:onClick="'location.href=\'' + @{/restaurant/report/orders} + '\';'"><br>
+				<input type="submit" value="Relatório de Ítens" th:onClick="'location.href=\'' + @{/restaurant/report/items} + '\';'"><br>
+				<input type="button" value="Sair" th:onClick="'location.href=\'' + @{/logout} + '\';'"><br>
+			</div>
+			<br/>
+			
+			<div>
+				<h1>Pedidos em andamento</h1>
+				<div th:each="order : ${orders}">
+					<input type="button" th:if="${!order.status.last}" th:value="${order.formattedId}" th:onClick="'location.href=\'' + @{/restaurant/order} + '?orderId=' + ${order.id} + '\';'"><br>
+				</div>
+				<div th:if="${orders.size() == 0 || orders.size() == null}">
+					<br/>
+					<span id="messageError">Não existem pedidos em andamento.</span>
+				</div>
+			</div>
+		
+		</div>
+		<br><br>
+	</body>
+</html>
+

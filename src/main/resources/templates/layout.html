@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://thymeleaf.org"
+		lang="pt" xml:lang="pt">
+		
+	<head>
+		<meta charset="UTF-8"/>
+		
+		<title>BlueFood</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bf_styleSystem.css}"/>
+		<script type="text/javascript" th:src="@{/js/script.js}"></script>
+	</head>
+	
+	<body>
+		<header>
+			<div id="logoSystem">
+				<span id="auxVertAlign"></span>
+				<a th:href="${link} == null ? @{/} : ${link}">
+					<img id="logoSystem" th:src="@{/images/bf_logoSystem.png}"/>
+				</a>
+			</div>
+			<div id="userLoggedIn" th:if="${#authentication.principal != 'anonymousUser'}">
+				<span th:text="'Olá, ' + ${#authentication.principal.user.name} + '!'"></span>
+				<div th:if="${session.cart != null}" style="display: inline;">
+					<br/>
+					<a th:href="@{/client/cart/view}">
+					<img th:if="${session.cart.items.size() <= 10}" th:src="@{/images/bf_iconCart_} + ${session.cart.items.size()} + '.png'" id="iconCart"/>
+					<img th:if="${session.cart.items.size() > 10}" th:src="@{/images/bf_iconCart_10+.png}" id="iconCart"/>
+					</a>
+				</div>
+			</div>
+		</header>
+		
+		<br/>
+		
+		<!-- Cabeçalho -->
+		
+		<!--  Conteúdo -->
+		<div layout:fragment="content"></div>
+		
+		<!-- Rodapé -->
+		
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		
+		<title>BlueFood</title>
+		<link rel="stylesheet" type="text/css" href="css/bf_styleSystem.css"/>
+	</head>
+	
+	<body>
+		<header>
+			<div id="logoSystem">
+				<span id="auxVertAlign"></span>
+				<a href="">
+					<img id="logoSystem" src="images/bf_logoSystem.png"/>
+				</a>
+			</div>
+			
+			<div id="userLoggedIn">
+				Olá, #NomeDoUsuário
+			</div>
+		</header>
+		
+		<br/><br/>
+		
+		<!-- Cabeçalho -->
+		
+		<div>
+			<h1>Comidas</h1>
+		</div>
+		
+		<div>
+			<span>Pizza de Calabresa</span><br>
+			<span>Pizzas</span><br>
+			<span>Massa fina, queijo, calabresa e pimenta.</span><br>
+			<span>R$ 45,00</span><br>
+			<input type="button" value="Remover"><br><br>
+			
+			<span>Hamburguer</span><br>
+			<span>Hamburguer</span><br>
+			<span>Pão, carne 200gr, queijo, tomate e alface..</span><br>
+			<span>R$ 30,00</span><br>
+			<input type="button" value="Remover"><br><br>
+			
+
+			<div id="messageError">
+				Eventual mensagem de erro.
+			</div><br>
+			
+			<span>Nova comida:</span><br>
+			<form method="post" action="">
+				<label for="item">Item: </label><br>	
+				<input type="text" name="item" id="item"/><br>
+				
+				<label for="description">Descrição: </label><br>	
+				<input type="text" name="description" id="description"/><br>
+				
+				<label for="price">Preço: </label><br>	
+				<input type="text" name="price" id="price"/><br>
+				
+				<label for="category">Categoria de comida: </label><br>	
+				<input type="text" name="category" id="category"/><br>
+				
+				<label for="highlight">Destaque: </label><br>	
+				<input type="checkbox" name="highlight" id="highlight"/><br><br>
+					
+				<input type="button" value="Adicionar"/><br><br>
+			</form>
+		</div>
+
+		<input type="button" value="Voltar" onClick="location.href='restaurantHome.html';"/>
+
+		<!-- Rodapé -->
+		<br><br>
+	</body>
+</html>
+

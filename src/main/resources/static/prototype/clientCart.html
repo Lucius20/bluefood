@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		
+		<title>BlueFood</title>
+		<link rel="stylesheet" type="text/css" href="css/bf_styleSystem.css"/>
+		
+		<script>
+			function isNumberKey(evt) {
+				var charCode = (evt.which) ? evt.which : event.keyCode;
+				
+				if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+				  return false;
+				}
+				
+				return true;
+			}
+		</script>
+	</head>
+	
+	<body>
+		<header>
+			<div id="logoSystem">
+				<span id="auxVertAlign"></span>
+				<a href="">
+					<img id="logoSystem" src="images/bf_logoSystem.png"/>
+				</a>
+			</div>
+			
+			<div id="userLoggedIn">
+				Olá, #NomeDoUsuário
+				
+				<br/>
+				
+				<img id="iconCart" src="images/bf_iconCart.png"/>
+			</div>
+		</header>
+		
+		<br/><br/>
+		
+		<!-- Cabeçalho -->
+		
+		<div>
+			<h1>Seu Pedido</h1>
+			
+			<img src="images/sys_restaurantSbubby.png" id="restaurantOption"/>
+		</div>
+		<br/><br/>
+		
+		<div>
+			<span>Pizza Calabresa</span> <br/>
+			<span>Qtde.: 1</span> <br/>
+			<span>(exemplo de observação, quando houver)</span> <br/>
+			<span>R$45,00</span> <br/><br/>
+			<input type="button" value="Remover"/>
+		</div>
+		<br/><br/>
+		
+		<div>
+			<span>Hamburguer</span> <br/>
+			<span>Qtde.: 2</span> <br/>
+			<span>(exemplo de observação, quando houver)</span> <br/>
+			<span>R$30,00</span> <br/><br/>
+			<input type="button" value="Remover"/>
+		</div>
+		<br/><br/>
+		
+		<div>
+			<span>Taxa de Entrega</span> <br/>
+			<span>R$15,00</span>
+		</div>
+		<br/><br/>
+		
+		<div>
+			<span>Total</span> <br/>
+			<span>R$120,00</span>
+		</div>
+		<br/><br/>
+		
+		<div>
+			<span>Cartão de Crédito</span>
+			<input type="text" name="card" onkeypress="return isNumberKey(event)"/>
+		</div>
+		
+		<div>
+			<input type="button" value="Enviar Pedido" onClick="location.href='clientOrder.html';"/> <br/>
+			<input type="button" value="Voltar" onClick="location.href='clientRestaurant.html';"/>
+		</div>
+		
+		<!-- Rodapé -->
+		
+	</body>
+</html>

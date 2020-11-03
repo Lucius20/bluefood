@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}" th:with="link=@{/restaurant/home}">
+	
+	<body>
+		<div layout:fragment="content">
+		
+			<div>
+				<h1>Comidas</h1>
+			</div>
+			
+			<div>
+				<div th:each="item : ${menuItems}">
+					<span id="restaurantOptionTitle" th:text="${item.name}"></span><br />
+					<img th:src="@{/images/food/} + ${item.image}" id="foodProfile"><br>
+					<span th:text="${item.category}"></span><br />
+					<span th:text="${item.description}"></span><br />
+					<span th:text="${currencyUtils.formatPtBr(item.price)}"></span><br />
+					<input type="button" value="Remover" th:onclick="'location.href=\'' + @{/restaurant/foods/remove} + '?itemId=' + ${item.id} + '\';'"><br /><br /><br />
+				</div>
+				
+				<span th:if="${menuItems.size() == 0}">Não existem comidas cadastradas.<br /><br /></span>	
+
+				<div id="messageSuccess" th:if="${msg != null}">
+					<span th:text="${msg}"></span><br />
+				</div>
+				
+				<br />
+		<span id="restaurantOptionTitle">Nova comida:</span><br />
+		<form method="post" th:object="${menuItem}" th:action="@{/restaurant/foods/create}" enctype="multipart/form-data">
+			<fieldset id="noBorder">
+				<input type="hidden" name="restaurant.id" th:value="${restaurant.id}" />			
+			
+				<label for="name">Nome: </label><br />	
+				<input type="text" id="name" th:field="*{name}" th:classappend="${#fields.hasErrors('name')} ? 'inputError' : ''" /><br />
+				<div id="messageError" th:if="${#fields.hasErrors('name')}">
+					<span th:errors="*{name}"></span>
+				</div><br />
+				
+				<label for="description">Descrição: </label><br />	
+				<input type="text" id="description" th:field="*{description}" th:classappend="${#fields.hasErrors('description')} ? 'inputError' : ''" /><br />
+				<div id="messageError" th:if="${#fields.hasErrors('description')}">
+					<span th:errors="*{description}"></span>
+				</div><br />
+				
+				<label for="price">Preço: </label><br />	
+				<input type="text"id="price" th:field="*{price}" th:classappend="${#fields.hasErrors('price')} ? 'inputError' : ''" onkeydown="return isNumberKeyCurrency(event);" /><br />
+				<div id="messageError" th:if="${#fields.hasErrors('price')}">
+					<span th:errors="*{price}"></span>
+				</div><br />
+				
+				<label for="highlight">Destaque: </label><br/>
+				<input type="checkbox" id="highlight" th:field="*{highlight}" /><br />
+				
+				<label for="category">Categoria de comida: </label><br />	
+				<input type="text" id="category" th:field="*{category}" th:classappend="${#fields.hasErrors('category')} ? 'inputError' : ''" /><br />
+				<div id="messageError" th:if="${#fields.hasErrors('category')}">
+					<span th:errors="*{category}"></span>
+				</div><br />
+				
+				<label for="logo">Logotipo: </label><br>	
+				<input type="file" id="logo" th:field="*{imageFile}" placeholder="Selecionar..." th:classappend="${#fields.hasErrors('imageFile')} ? 'inputError' : ''"><br />
+				<div id="messageError" th:if="${#fields.hasErrors('imageFile')}">
+					<span th:errors="*{imageFile}"></span>
+				</div>
+				<br />
+
+				<input type="submit" value="Adicionar" />
+			</fieldset>
+		</form>
+		</div><br/><br /><br />
+		
+		<input type="submit" value="Voltar" th:onclick="'location.href=\'' + @{/restaurant/home} + '\''" />
+
+		</div>
+		<br><br>
+	</body>
+</html>
+

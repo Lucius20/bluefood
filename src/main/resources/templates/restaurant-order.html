@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}" th:with="link=@{/restaurant/home}">
+	
+	<body>
+		<div layout:fragment="content">
+		
+			<div>
+				<h1>PEDIDO</h1>
+				
+				<div id="messageSuccess" th:if="${msg != null}">
+					<span th:text="${msg}"></span>
+				</div>
+				
+				<form method="post" th:action="@{/restaurant/order/nextStatus}">
+					<input type="hidden" name="orderId" th:value="${order.id}"><br>
+					<input type="submit" th:value="'Status: ' + ${order.status.description}" th:disabled="${order.status.last}"><br>
+				</form>
+				
+			</div>
+			<br/><br/>
+			
+			<div>
+				<span id="restaurantOptionTitle">Data</span><br/>
+				<span th:text="${#temporals.format(order.date, 'dd/MM/yyyy HH:mm')}"></span>
+			</div>
+			<br><br>
+			
+			<div>
+				<span id="restaurantOptionTitle" th:text="${order.client.name}"></span><br>
+				<span th:text="'CEP: ' + ${order.client.formattedCep}"></span>
+			</div>
+			<br><br>
+	
+			<div th:each="item : ${order.items}">
+				<span id="restaurantOptionTitle" th:text="${item.menuItem.name}"></span><br>
+				<span th:text="'Qtde.: ' + ${item.amount}"></span><br>
+				<span th:text="${item.note}"></span><br>
+				<span th:text="${currencyUtils.formatPtBr(item.menuItem.price)}"></span>
+			</div>
+			<br><br>
+			
+			<div>
+				<span id="restaurantOptionTitle">Taxa de entrega</span><br>
+				<span th:text="${currencyUtils.formatPtBr(order.deliveryFee)}"></span>
+			</div>
+			<br><br>
+			
+			<div>
+				<span id="restaurantOptionTitle">Total</span><br>
+				<span th:text="${currencyUtils.formatPtBr(order.total)}"></span>
+			</div>
+			<br><br>
+			
+			
+			<input type="submit" value="Voltar" th:onclick="'location.href=\'' + @{/restaurant/home} + '\''" />
+
+		</div>
+		
+		<br><br>
+	</body>
+</html>
+

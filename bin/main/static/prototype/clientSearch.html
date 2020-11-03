@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		
+		<title>BlueFood</title>
+		<link rel="stylesheet" type="text/css" href="css/bf_styleSystem.css"/>
+	</head>
+	
+	<body>
+		<header>
+			<div id="logoSystem">
+				<span id="auxVertAlign"></span>
+				<a href="">
+					<img id="logoSystem" src="images/bf_logoSystem.png"/>
+				</a>
+			</div>
+			
+			<div id="userLoggedIn">
+				Olá, #NomeDoUsuário
+				
+				<br/>
+				
+				<img id="iconCart" src="images/bf_iconCart.png"/>
+			</div>
+		</header>
+		
+		<br/><br/>
+		
+		<!-- Cabeçalho -->
+		
+		<div>
+			<h1>É hora de rangar!</h1>
+			
+			<form method="post" action="">
+				<fieldset id="filters">
+					<input type="text" name="search" placeholder="Buscar..."/>
+					<input type="button" value="Procurar" onClick="location.href='clientSearch.html';"/>
+				</fieldset>
+			</form>
+			
+		</div>
+		
+		<div id="categoriesFoodGeneral">
+			<div id="categoriesFoodOption">
+				<a href="#">
+					<img src="images/sys_categoryBarbecue.png" id="categoriesFood"/> <br/>
+					<span>Churrasco</span>
+				</a>
+			</div>
+			
+			<div id="categoriesFoodOption">
+				<a href="#">
+					<img src="images/sys_categoryHamburger.png" id="categoriesFood"/> <br/>
+					<span>Hamburguer</span>
+				</a>
+			</div>
+			
+			<div id="categoriesFoodOption">
+				<a href="#">
+					<img src="images/sys_categoryPizza.png" id="categoriesFood"/> <br/>
+					<span>Pizza</span>
+				</a>
+			</div>
+			
+			<div id="categoriesFoodOption">
+				<a href="#">
+					<img src="images/sys_categorySalad.png" id="categoriesFood"/> <br/>
+					<span>Salada</span>
+				</a>
+			</div>
+			
+			<div id="categoriesFoodOption">
+				<a href="#">
+					<img src="images/sys_categoryDessert.png" id="categoriesFood"/> <br/>
+					<span>Sobremesa</span>
+				</a>
+			</div>
+		</div>
+		
+		<div>
+			<h1>Resultados</h1>
+			
+			<fieldset>
+				<legend>Filtros</legend>
+				
+				<input type="button" value="Entrega grátis"/> <br/>
+				<input type="button" value="Maior preço" id="selected"/> 
+				<input type="button" value="Menor preço"/> <br/>
+				
+				<input type="button" value="Maior taxa"/> 
+				<input type="button" value="Menor taxa"/> <br/>
+				
+				<input type="button" value="Maior tempo"/> 
+				<input type="button" value="Menor tempo"/> <br/>
+			</fieldset>
+			
+		</div>
+		
+		<div>
+			<div id="restaurantOption">
+				<a href="clientRestaurant.html">
+					<img src="images/sys_restaurantBubgerKirg.png" id="restaurantOption"/>
+					<br/>
+					<span id="restaurantOptionTitle">Nome do Restaurante</span>
+					<br/>
+					<span>Categoria de Comida</span>
+					<br/>
+					<span>Tempo Médio de Entrega: 40min</span>
+					<br/>
+					<span>Taxa de Entrega: R$15,00</span>
+					<br/>
+				</a>
+			</div>
+			<br/><br/>
+			
+			<div id="restaurantOption">
+				<a href="clientRestaurant.html">
+					<img src="images/sys_restaurantMcNaldos.png" id="restaurantOption"/>
+					<br/>
+					<span id="restaurantOptionTitle">Nome do Restaurante</span>
+					<br/>
+					<span>Categoria de Comida</span>
+					<br/>
+					<span>Tempo Médio de Entrega: 40min</span>
+					<br/>
+					<span>Taxa de Entrega: R$15,00</span>
+					<br/>
+				</a>
+			</div>
+			<br/><br/>
+			
+			<div id="restaurantOption">
+				<a href="clientRestaurant.html">
+					<img src="images/sys_restaurantSbubby.png" id="restaurantOption"/>
+					<br/>
+					<span id="restaurantOptionTitle">Nome do Restaurante</span>
+					<br/>
+					<span>Categoria de Comida</span>
+					<br/>
+					<span>Tempo Médio de Entrega: 40min</span>
+					<br/>
+					<span>Taxa de Entrega: R$15,00</span>
+					<br/>
+				</a>
+			</div>
+			<br/><br/>
+		</div>
+		
+		<input type="button" value="Voltar" onClick="location.href='index.html';"/>
+		
+		<!-- Rodapé -->
+		
+	</body>
+</html>

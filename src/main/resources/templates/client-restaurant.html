@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}" th:with="link=@{/client/home}">
+	<body>
+		<div layout:fragment="content">
+		
+			<div>
+				<div>
+					<img id ="restaurantOption" th:src="@{/images/logo/} + ${restaurant.logo}"/>
+					<br/>
+					<span id="restaurantOptionTitle" th:text="${restaurant.name}"></span>
+					<br/>
+					<span th:text="${restaurant.categoriesAsText}"></span>
+					<br/>
+					<span th:text="'Tempo médio de entrega: ' + ${restaurant.calculateDeliveryBaseTime(cep)} + 'm'"></span>
+					<br/>
+					<span th:text="'Taxa de Entrega: ' + ${currencyUtils.formatPtBr(restaurant.deliveryFee)}"></span>
+					<br/>
+				</div>
+				
+				<br/><br/>
+				
+				<div>
+					<h1>Opções</h1>
+					
+					<form id="filterForm" method="get" th:action="@{/client/restaurant}">
+						<input type="hidden" id="category" name="category"/>
+						<input type="hidden" name="restaurantId" th:value="${restaurant.id}"/>
+						<fieldset>
+							<legend>Filtros</legend>
+							<input type="button" value="Todas" onClick="filterMenu2();"/>
+							<div style="display: inline;" th:each="category : ${categories}">
+								<input 
+									type="button" 
+									th:value="${category}" 
+									th:data-category="${category}"
+									onClick="filterMenu(this.getAttribute('data-category'));"
+									th:id="${category == selectedCategory} ? 'selected' : ''"/>
+							</div>
+						</fieldset>
+					</form>
+					<br/>
+				</div>
+				
+				<div th:if="${menuItemsHighlighted.size() > 0}">
+					<div>
+						<h1>Destaques</h1>
+					</div>
+				
+					<br/><br/>
+				
+					<div id="foodOptions">
+						<div th:each="item : ${menuItemsHighlighted}">
+							<img th:src="@{/images/food/} + ${item.image}" id="foodOption"/> <br/>
+							<span id="restaurantOptionTitle" th:text="${item.name}"></span> <br/>
+							<span th:text="${item.description}"></span> <br/>
+							<span th:text="${currencyUtils.formatPtBr(item.price)}"></span> <br/>
+							
+							<form method="get" th:action="@{/client/cart/add}">
+								<input type="hidden" name="itemId" th:value="${item.id}">
+								<label for="amount" >Quantidade: </label> <br/>
+								<select id="amount" name="amount">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+								</select>
+								<br/><br/>
+								
+								Observações: 
+								<br/>
+								<textarea id="foodOption" name="note">
+								</textarea>
+								<br/><br/>
+								
+								<input type="submit" value="Adicionar ao carrinho"/>
+							</form>
+						</div>
+					</div>
+					<span id="messageError" th:if="${menuItemsHighlighted.size() == 0}">Não existem ítens em destaque.</span>
+					<br/><br/>
+					<br/><br/>
+				</div>
+			
+				<div>
+					<h1>Menu</h1>
+				</div>
+			
+				<div id="foodOptions">
+					<div th:each="item : ${menuItemsNotHighlighted}">
+						<img th:src="@{/images/food/} + ${item.image}" id="foodOption"><br>
+						<span id="restaurantOptionTitle" th:text="${item.name}"></span><br>
+						<span th:text="${item.description}"></span><br>
+						<span th:text="${currencyUtils.formatPtBr(item.price)}"></span><br><br>
+						<form method="get" th:action="@{/client/cart/add}">
+							<input type="hidden" name="itemId" th:value="${item.id}">
+							<label for="amount">Quantidade: </label> <br/>
+							<select name="amount" id="amount">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
+							<br/><br/>
+							
+							Observações:
+							<br>
+							<textarea id="foodOption" name="note">
+							</textarea>
+							<br/><br/>
+							
+							<input type="submit" value="Adicionar ao carrinho">
+							<br/><br/>
+						</form>
+					</div>
+				</div>
+				<br><br>
+			
+				<input type="button" value="Voltar" th:onClick="'location.href=\'' + @{/client/home} + '\';'"/>
+		
+			</div>
+		</div>
+	</body>
+</html>

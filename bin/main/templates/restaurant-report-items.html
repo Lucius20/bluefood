@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}" th:with="link=@{/restaurant/home}">
+	
+	<body>
+		<div layout:fragment="content">
+		
+			<div>
+				<h1>Relatório de Ítens</h1>
+				<form method="get" th:action="@{/restaurant/report/items}" th:object="${itemReportFilter}">
+					<fieldset>
+						<legend>Filtros</legend>
+						
+						<label for="number">Ítem: </label><br>	
+						<select id="number" th:field="*{itemId}">
+							<option value="0">Todos</option>
+							<option th:each="item : ${menuItems}" th:value="${item.id}" th:text="${item.name}">
+						</select><br>
+						
+						<label for="start">Início: </label><br>	
+						<input type="date" id="start" th:field="*{startDate}"><br>
+						
+						<label for="end">Fim: </label><br>	
+						<input type="date" id="end" th:field="*{endDate}"><br>
+						
+						<input type="submit" value="Buscar">
+					</fieldset>
+				</form>
+			</div>
+			<br><br>
+			
+			<span th:if="${calculatedItems.size() == 0}" id="messageError">Nenhum pedido encontrado.</span>
+			
+			<div th:if="${calculatedItems.size() > 0}">
+				<table>
+					<tr>
+						<th>Ítem</th>
+						<th>Pedidos</th>
+						<th>Quantidade</th>
+						<th>Faturamento</th>
+					</tr>
+					<tr th:each="item : ${calculatedItems}">
+						<td><span th:text="${item.name}"></span></td>
+						<td><span th:text="${item.orders}"></span></td>
+						<td><span th:text="${item.amount}"></span></td>
+						<td><span th:text="${currencyUtils.formatPtBr(item.earning)}"></span></td>
+					</tr>
+				</table>
+			</div>
+			<br><br></br>
+	
+			<input type="submit" value="Voltar" th:onclick="'location.href=\'' + @{/restaurant/home} + '\''" />
+
+		</div>
+		<br><br>
+	</body>
+</html>
+

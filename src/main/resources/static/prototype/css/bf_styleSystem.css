@@ -1,0 +1,261 @@
+@charset "ISO-8859-1";
+
+*
+{
+	font-family: "Verdana";
+}
+
+body
+{
+	text-align: center;
+	margin: 0px;
+}
+
+a
+{
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+h1
+{
+	color: #1E9BDE;
+	background-color: #EEEEEE;
+	text-transform: uppercase;
+	font-style: italic;
+	font-size: 20px;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	border-left: 10px solid #1E9BDE;
+	border-right: 10px solid #1E9BDE;
+	border-top: 2px solid #1E9BDE;
+	border-bottom: 2px solid #1E9BDE;
+	border-radius: 30px;
+}
+
+fieldset
+{
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	border-width: 2px;
+}
+
+input,
+textarea,
+select
+{
+	border: 2px solid #1E9BDE;
+	height: 35px;
+	margin-bottom: 6px;
+}
+
+textarea
+{
+	width: 300px;
+	height: 300px;
+}
+
+input[type=text],
+input[type=password],
+input[type=date],
+select
+{
+	font-size: 16px;
+	width: 140px;
+	padding-left: 8px;
+}
+
+input[type=button],
+input[type=submit]
+{
+	background-color: #1E9BDE;
+	border-bottom: 3px solid #0153B0;
+	border-top: 1px solid #0153B0;
+	border-left: 1px solid #0153B0;
+	border-right: 1px solid #0153B0;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-transform: uppercase;
+	border-radius: 5px;
+	padding: 5px 8px;
+}
+
+input[type=button]:hover,
+input[type=submit]:hover
+{
+	background-color: #69C5EE;
+	border-color: #1E9BDE;
+}
+
+table
+{
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FFFFFF;
+	font-size: 14px;
+	border-spacing: 1px;
+}
+
+td
+{
+	padding: 3px;
+}
+
+tr:nth-child(even)
+{
+	background-color: #DDDDDD;
+}
+
+tr:nth-child(odd)
+{
+	background-color: #FFFFFF;
+}
+
+th
+{
+	background-color: #1E9BDE;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	padding: 3px;
+}
+
+div#logoSystem
+{
+	background-color: #1E9BDE;
+	height: 70px;
+}
+
+div#messageError
+{
+	background-color: #D40000;
+	width: 370px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+	color: #FFFFFF;
+	height: 30px;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+div#messageSuccess
+{
+	background-color: #0BAF00;
+	width: 370px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+	color: #FFFFFF;
+	height: 30px;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+div#userLoggedIn
+{
+	background-color: #7BC2E5;
+	color: #FFFFFF;
+	line-height: 40px;
+}
+
+div#categoriesFoodGeneral
+{
+	overflow: hidden;
+	display: flex;
+	justify-content: space-between;
+}
+
+div#categoriesFoodOption
+{
+	background-color: #FFFFFF;
+	float: left;
+	height: 130px;
+}
+
+div#restaurantOption
+{
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#foodOptions
+{
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img#logoSystem
+{
+	height: 60%;
+	vertical-align: middle;
+}
+
+img#iconUser
+{
+	width: 100px;
+}
+
+img#iconCart
+{
+	height: 50px;
+}
+
+img#categoriesFood
+{
+	height: 50%;
+}
+
+img#restaurantOption
+{
+	height: 130px;
+}
+
+img#foodOption
+{
+	height: 130px;
+}
+
+span#auxVertAlign
+{
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+span#restaurantOptionTitle
+{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+fieldset#filters
+{
+	border-width: 3px;
+}
+
+input#selected
+{
+	background-color: #69C5EE;
+	border-color: #1E9BDE;
+}
+
+textarea#foodOption
+{
+	height: 70px;
+}
+
+.inputError
+{
+	border: 2px solid #FF2828;
+}

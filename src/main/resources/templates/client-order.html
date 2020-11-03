@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}" th:with="link=@{/client/home}">
+	
+	<body>
+	
+		<div layout:fragment="content">
+		
+			<div>
+				<h1>Seu Pedido</h1>
+				
+				<input type="button" value="Refazer Pedido" th:onClick="'location.href=\'' + @{/client/cart/redoCart} + '?orderId=' + ${order.id} + '\';'"/>
+			</div>
+			<br/><br/>
+			
+			<!-- <div id="messageError">
+				<span th:text="'STATUS: ' + ${order.status.description}"></span>
+			</div> -->
+			
+			<div id="orderStatus">
+				<img th:if="${order.status.order == 1}" th:src="@{/images/status_1.png}" id="orderStatus">
+				<img th:if="${order.status.order == 2}" th:src="@{/images/status_2.png}" id="orderStatus">
+				<img th:if="${order.status.order == 3}" th:src="@{/images/status_3.png}" id="orderStatus">
+			</div>
+			<br/>	
+			
+			<div>
+				<img th:src="@{/images/logo/} + ${order.restaurant.logo}" id="restaurantOption"/>
+			</div>
+			<br/>
+			
+			<div th:each="item : ${order.items}">
+				<span id="restaurantOptionTitle" th:text="${item.menuItem.name}"></span> <br/>
+				<span th:text="'Qtde.: ' + ${item.amount}"></span> <br/>
+				<span th:text="${item.note}"></span> <br/>
+				<span th:text="${currencyUtils.formatPtBr(item.price)}"></span> <br/><br/>
+			</div>
+			<br/>
+			
+			<div>
+				<span id="restaurantOptionTitle">Taxa de Entrega</span> <br/>
+				<span th:text="${currencyUtils.formatPtBr(order.deliveryFee)}"></span>
+			</div>
+			<br/><br/>
+			
+			<div>
+				<span id="restaurantOptionTitle">Total</span> <br/>
+				<span th:text="${currencyUtils.formatPtBr(order.total)}"></span>
+			</div>
+			<br/><br/>
+			
+			<div>
+				<input type="button" value="Voltar" th:onClick="'location.href=\'' + @{/client/home} + '\';'"/>
+			</div>
+		
+		</div>
+		
+	</body>
+</html>
